@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        string res=s;
+        int left=-1;int right=0;
+        int maxlen=0;
+        int search[256]={0};
+        while(right<res.length())
+        {
+            if(search[res[right]]==0)
+            {
+                search[res[right]]++;
+                right++;
+            }
+            else
+            {
+                left++;
+                search[res[left]]--;
+            }
+            maxlen=right-left-1>maxlen?right-left-1:maxlen;
+        }
+        return maxlen;
+    }
+};
